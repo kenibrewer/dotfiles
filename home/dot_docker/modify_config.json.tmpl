@@ -9,11 +9,6 @@ if [[ -z "${json}" ]]; then
   json='{}'
 fi
 
-json=$("${jq[@]}" '.aliases.builder = "buildx"' <<<"${json}")
-# Enable buildkit even though buildx is already the default,
-# because it's what docker-compose uses.
-json=$("${jq[@]}" '.features.buildkit = true' <<<"${json}")
-
 # {{ if .is_wsl }}
 json=$("${jq[@]}" '.credsStore = "wincred.exe"' <<<"${json}")
 # {{ else if .is_gnome }}
