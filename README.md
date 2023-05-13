@@ -6,9 +6,9 @@ Bootstrap your Ubuntu in a single command!
 
 ![Sample dotfiles image](https://user-images.githubusercontent.com/29582865/173688885-acd1e312-4741-4ec1-bc9d-b1f31e289749.png)
 
-This dotfiles repository is currently aimed for [**Ubuntu on WSL**](https://ubuntu.com/wsl), [**Ubuntu Server**](https://ubuntu.com/server), and [**Ubuntu Desktop**](https://ubuntu.com/desktop), tested against versions **18.04**, **20.04**, and **22.04**. See how to get started with WSL [here](https://docs.microsoft.com/pt-br/windows/wsl/install-win10).
+This dotfiles repository is currently aimed for [**Ubuntu on WSL**](https://ubuntu.com/wsl), [**Ubuntu Server**](https://ubuntu.com/server), and [**Ubuntu Desktop**](https://ubuntu.com/desktop), tested against versions **20.04** and **22.04**. See how to get started with WSL [here](https://docs.microsoft.com/pt-br/windows/wsl/install-win10).
 
-It's also suitable for use in [**GitHub Codespaces**](https://docs.github.com/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account#dotfiles), [**Gitpod**](https://www.gitpod.io/docs/config-dotfiles), [**VS Code Remote - Containers**](https://code.visualstudio.com/docs/remote/containers#_personalizing-with-dotfile-repositories), or even Linux distribution that are not Ubuntu, through the [**minimum mode**](#minimum-mode).
+It's also suitable for use in [**GitHub Codespaces**](https://docs.github.com/codespaces/customizing-your-codespace/personalizing-codespaces-for-your-account#dotfiles), [**Gitpod**](https://www.gitpod.io/docs/config-dotfiles), [**VS Code Remote - Containers**](https://code.visualstudio.com/docs/remote/containers#_personalizing-with-dotfile-repositories), or even Linux distributions that are not Ubuntu, through the [**minimum mode**](#minimum-mode).
 
 Managed with [`chezmoi`](https://chezmoi.io), a great dotfiles manager.
 
@@ -38,32 +38,32 @@ It will be enabled by default when running in a Dev Container or in distribution
 
 ## Configuring the terminal font
 
-This dotfiles uses the ZSH theme [Powerlevel10k](https://github.com/romkatv/powerlevel10k), so it requires you to install a font on your host machine with support for the [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) glyphs. I recommend the [`FiraCode Nerd Font`](https://github.com/ryanoasis/nerd-fonts/tree/HEAD/patched-fonts/FiraCode#readme).
+This dotfiles uses the ZSH theme [Powerlevel10k](https://github.com/romkatv/powerlevel10k), so it requires you to install a font on your host machine with support for the [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) glyphs. I recommend the [`FiraCode Nerd Font Mono`](https://github.com/ryanoasis/nerd-fonts/tree/HEAD/patched-fonts/FiraCode#readme).
 
-In **Ubuntu Desktop**, the dotfiles installation will take care of installing the font and set it up for you in **GNOME Terminal**.
+For **WSL** and **Ubuntu Desktop**, the dotfiles installation will automatically take care of installing the font and set it up for you in **VS Code**, **Windows Terminal** (for WSL), and **GNOME Terminal** (for Ubuntu Desktop).
 
-But on other systems or terminal emulators, **you will need to configure it manually**. Here are some tips:
+On other systems or terminal emulators, **you will need to configure it manually**. Here are some tips:
 
 ### Installing the font on **Windows**
 
-1. [Download it by clicking here](https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete.ttf).
+1. [Download it by clicking here](https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete%20Mono.ttf).
 2. Open it and click in **_Install_**.
 3. Restart any applications that you want to load the font into.
 
 ### Configuring the font in **VS Code**
 
 1. On **VS Code**, press <kbd>Ctrl</kbd>+<kbd>,</kbd> to open the settings.
-2. Search for "**Terminal Font Family**", and write `FiraCode Nerd Font` in the entry named **_Terminal › Integrated: Font Family_**. Like below:
+2. Search for "**Terminal Font Family**", and write `FiraCode Nerd Font Mono` in the entry named **_Terminal › Integrated: Font Family_**. Like below:
 
-   ![VS Code font configuration example](https://user-images.githubusercontent.com/29582865/112052025-5cb5aa80-8b31-11eb-8e85-a4eb9e1a09a8.png)
+   ![VS Code font configuration example](https://user-images.githubusercontent.com/29582865/218275934-13c6579b-e470-47cf-982d-a192c9627c8e.png)
 
 ### Configuring the font in **Windows Terminal**
 
 1. On **Windows Terminal**, press <kbd>Ctrl</kbd>+<kbd>,</kbd> to open the settings.
 2. Go to **_Profiles -> Defaults_** in the left panel. Then, go to **_Additional settings -> Appearance_**.
-3. At **_Text -> Font face_**, enable the **_Show all fonts_** option and select **_FiraCode Nerd Font_**. Like below:
+3. At **_Text -> Font face_**, select **_FiraCode Nerd Font Mono_**. Like below:
 
-   ![Windows Terminal font configuration example](https://user-images.githubusercontent.com/29582865/173674283-f6380d8c-a1ff-42b5-b963-ca578d09c2d5.png)
+   ![Windows Terminal font configuration example](https://user-images.githubusercontent.com/29582865/218276062-1b8a299c-cef3-4e80-b557-66cb5ff8a78b.png)
 
 ---
 

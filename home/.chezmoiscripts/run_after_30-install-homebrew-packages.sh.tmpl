@@ -75,6 +75,7 @@ readonly wanted_packages=(
   k3d
   dive
   gh
+  hadolint
 )
 
 missing_packages=()
@@ -88,10 +89,4 @@ done
 if [[ ${#missing_packages[@]} -gt 0 ]]; then
   log_task "Installing missing packages with Homebrew: ${missing_packages[*]}"
   brew install --force "${missing_packages[@]}"
-fi
-
-chezmoi_executable="{{ .chezmoi.executable }}"
-if [[ "${chezmoi_executable}" != *"/.linuxbrew/"* ]]; then
-  log_task "Uninstalling chezmoi not installed by Homebrew: ${chezmoi_executable}"
-  rm -f "${chezmoi_executable}"
 fi

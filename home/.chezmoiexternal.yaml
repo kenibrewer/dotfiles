@@ -39,6 +39,14 @@
   url: "https://github.com/direnv/direnv/releases/download/v{{ template "get-github-latest-version" list "direnv/direnv" $cache }}/direnv.linux-{{ .chezmoi.arch }}"
   executable: true
 
+".local/bin/kubecolor":
+  type: file
+  url: "https://github.com/hidetatz/kubecolor/releases/download/v{{ template "get-github-latest-version" list "hidetatz/kubecolor" $cache }}/kubecolor_{{ template "get-github-latest-version" list "hidetatz/kubecolor" $cache }}_Linux_{{ .uname_arch }}.tar.gz"
+  filter:
+    command: tar
+    args: ["-x", "-z", "-O", "kubecolor"]
+  executable: true
+
 ".local/bin/kubectx":
   type: file
   url: "https://github.com/ahmetb/kubectx/releases/download/v{{ template "get-github-latest-version" list "ahmetb/kubectx" $cache }}/kubectx_v{{ template "get-github-latest-version" list "ahmetb/kubectx" $cache }}_linux_{{ .uname_arch }}.tar.gz"
@@ -99,7 +107,7 @@
   executable: true
 {{-     end }}
 
-{{-   end }}
+{{-  end }}
 
 ".deno/bin":
   type: archive
@@ -107,24 +115,15 @@
   include:
     - deno
 
-".docker/cli-plugins/docker-compose":
+"{{ joinPath .fontsDir .terminalFont.fileName }}":
   type: file
-  url: "https://github.com/docker/compose/releases/download/v{{ template "get-github-latest-version" list "docker/compose" $cache }}/docker-compose-linux-x86_64"
-  executable: true
+  url: "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/{{ template "get-github-head-revision" list "ryanoasis/nerd-fonts" $cache }}/patched-fonts/FiraCode/Regular/FiraCodeNerdFontMono-Regular.ttf"
 
-".docker/cli-plugins/docker-buildx":
+{{    if .is_wsl -}}
+"{{ includeTemplate "get-external-scripts-dir" . }}/Install-Font.ps1":
   type: file
-  url: "https://github.com/docker/buildx/releases/download/v{{ template "get-github-latest-version" list "docker/buildx" $cache }}/buildx-v{{ template "get-github-latest-version" list "docker/buildx" $cache }}.linux-amd64"
-  executable: true
-
-# Downloads all the variants of Fira Code Nerd Font
-{{-   range $_, $face := list "Regular" "Light" "Medium" "Bold" "Retina" "SemiBold" -}}
-{{-     range $_, $variant := list "" " Mono" }}
-".local/share/fonts/Fira Code {{ $face }} Nerd Font Complete{{ $variant }}.ttf":
-  type: file
-  url: "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/{{ template "get-github-head-revision" list "ryanoasis/nerd-fonts" $cache }}/patched-fonts/FiraCode/{{ $face }}/complete/Fira%20Code%20{{ $face }}%20Nerd%20Font%20Complete{{ $variant | replace " " "%20" }}.ttf"
-{{      end -}}
-{{-   end -}}
+  url: "https://raw.githubusercontent.com/ralish/PSWinGlue/{{ template "get-github-head-revision" list "ralish/PSWinGlue" $cache }}/Scripts/Install-Font.ps1"
+{{-   end }}
 
 {{- template "save-versions-and-revisions-cache" $cache -}}
 
