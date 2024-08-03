@@ -1,9 +1,7 @@
 {
-	"image": "mcr.microsoft.com/devcontainers/universal:2",
+	"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
 	"features": {
 		"ghcr.io/rio/features/chezmoi:1": {}
 	},
-	"onCreateCommand": "chezmoi init kenibrewer",
-	"remoteUser": "kenibrewer",
-	"workspaceMount": "/home/kenibrewer/.local/share/chezmoi"
+	"postCreateCommand": "chezmoi init kenibrewer --source ${containerWorkspaceFolder} --force",
 }
