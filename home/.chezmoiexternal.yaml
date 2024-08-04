@@ -52,6 +52,14 @@
   url: "https://github.com/junegunn/fzf/releases/download/v{{ $fzfVersion }}/fzf-{{ $fzfVersion }}-linux_{{ .chezmoi.arch }}.tar.gz"
   path: fzf
 
+{{ if not .is_devcontainer | or (.is_devcontainer | and (not (lookPath "pkgx")) | and (ne .chezmoi.osRelease.id "alpine")) -}}
+".local/bin/pkgx":
+  type: archive-file
+  {{ $pkgxVersion := includeTemplate "get-github-latest-version" (list "felipecrs/pkgx" $cache) }}
+  url: "https://github.com/felipecrs/pkgx/releases/download/v{{ $pkgxVersion }}/pkgx-{{ $pkgxVersion }}+linux+{{ .uname_arch | replace "_" "-" }}.tar.xz"
+  path: pkgx
+{{- end }}
+
 ".local/bin/pipx":
   type: file
   {{ $pipxVersion := includeTemplate "get-github-latest-version" (list "pypa/pipx" $cache) }}
@@ -64,24 +72,4 @@
   url: "https://github.com/felipecrs/skopeo-bin/releases/download/v{{ $skopeoVersion }}/skopeo.linux-{{ .chezmoi.arch }}"
   executable: true
 
-{{ if not .is_devcontainer -}}
-"{{ joinPath .fontsDir .terminalFont.fileName }}":
-  type: file
-  {{ $nerdFontsVersion := includeTemplate "get-github-latest-version" (list "ryanoasis/nerd-fonts" $cache) }}
-  url: "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v{{ $nerdFontsVersion }}/patched-fonts/pCode/Regular/FiraCodeNerdFontMono-Regular.ttf"
-
-{{    if .is_wsl -}}
-{{    $externalScriptsDir := includeTemplate "get-external-scripts-dir" . }}
-"{{ $externalScriptsDir }}/Install-Font.ps1":
-  type: file
-  {{ $psWinGlueRevision := includeTemplate "get-github-head-revision" (list "ralish/PSWinGlue" $cache) }}
-  url: "https://raw.githubusercontent.com/ralish/PSWinGlue/{{ $psWinGlueRevision }}/Scripts/Install-Font.ps1"
-
-"{{ $externalScriptsDir }}/Uninstall-Font.ps1":
-  type: file
-  url: "https://raw.githubusercontent.com/ralish/PSWinGlue/{{ $psWinGlueRevision }}/Scripts/Uninstall-Font.ps1"
-{{-   end }}
-
 {{- template "save-versions-and-revisions-cache" $cache -}}
-
-{{- end -}}

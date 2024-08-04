@@ -80,6 +80,12 @@
 {{-   writeToStdout "\n💡 Tip: you can always make chezmoi ask this again by running `chezmoi init` without `--force`.\n" -}}
 {{- end -}}
 
+{{- $osid := .chezmoi.os -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
+
 {{- /* This retains the value passed with --source on chezmoi init, which is used in the ../install.sh script */ -}}
 sourceDir: "{{ .chezmoi.workingTree }}"
 
@@ -106,6 +112,8 @@ data:
   is_devcontainer: {{ $minimum }}
   is_gnome: {{ $gnome }}
   is_headless: {{ $headless }}
+  {{/* osid examples: "darwin", "linux-debian", "linux-fedora" */ -}}
+  osid: {{ $osid | quote }}
 
   name: "{{ $name }}"
   email: "{{ $email }}"
