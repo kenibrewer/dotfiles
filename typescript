@@ -1,0 +1,8 @@
+Script started on 2024-08-05 00:14:16+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="158" LINES="14"]
+[?2004h]0;vscode@codespaces-97eb3e: /workspaces/dotfiles[01;32mvscode@codespaces-97eb3e[00m:[01;34m/workspaces/dotfiles[00m$ gitstatus
+[?2004lcmd not found: gitstatus
+[?2004h]0;vscode@codespaces-97eb3e: /workspaces/dotfiles[01;32mvscode@codespaces-97eb3e[00m:[01;34m/workspaces/dotfiles[00m$ gitstatus^C[?2004l[?2004h[?2004l
+[?2004h]0;vscode@codespaces-97eb3e: /workspaces/dotfiles[01;32mvscode@codespaces-97eb3e[00m:[01;34m/workspaces/dotfiles[00m$ c[Kexit
+[?2004lexit
+
+Script done on 2024-08-05 00:16:22+00:00 [COMMAND_EXIT_CODE="130"]

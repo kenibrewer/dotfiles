@@ -73,3 +73,4 @@ plugins=(
 fpath+="${ZSH_CUSTOM:-"${ZSH}/custom"}/plugins/zsh-completions/src"
 
 source "${ZSH}/oh-my-zsh.sh"
+eval "$(starship init zsh)"
