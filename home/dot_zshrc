@@ -63,6 +63,7 @@ plugins=(
   docker-compose
   command-not-found
   common-aliases
+  fzf-tab
   ubuntu
   sudo
   zsh-syntax-highlighting

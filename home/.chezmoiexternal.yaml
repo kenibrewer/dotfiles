@@ -32,6 +32,13 @@
   stripComponents: 1
   exact: true
 
+".oh-my-zsh/custom/plugins/fzf-tab":
+  type: archive
+  {{ $zshCompletionsRevision := includeTemplate "get-github-head-revision" (list "Aloxaf/fzf-tab" $cache) }}
+  url: "https://github.com/Aloxaf/fzf-tab/archive/{{ $zshCompletionsRevision }}.tar.gz"
+  stripComponents: 1
+  exact: true
+
 ".config/gitalias/gitalias.txt":
   type: file
   {{ $gitaliasRevision := includeTemplate "get-github-head-revision" (list "GitAlias/gitalias" $cache) }}
