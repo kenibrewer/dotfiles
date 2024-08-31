@@ -7,8 +7,10 @@ true || source ../.chezmoitemplates/scripts-library
 
 zsh_path="/bin/zsh"
 
+{{ if ne .osid "darwin" -}}
 if ! getent passwd '{{ .chezmoi.username }}' | cut -d : -f 7- | grep -q "^${zsh_path}$"; then
   log_task "Configuring ZSH as default shell"
 
   c sudo usermod --shell "${zsh_path}" '{{ .chezmoi.username }}'
 fi
+{{ end }}

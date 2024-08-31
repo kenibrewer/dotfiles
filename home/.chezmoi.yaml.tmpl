@@ -119,5 +119,5 @@ data:
   email: "{{ $email }}"
 
   editor: "code --wait"
-
+  uname: "{{ output "uname" | trim }}"
   uname_arch: "{{ output "uname" "-m" | trim }}"

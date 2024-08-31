@@ -14,18 +14,18 @@ function is_pkgx_package_installed() {
     "exec pkgx +${package}" "${HOME}/.local/bin"
 }
 
-readonly unwanted_packages=()
+# readonly unwanted_packages=()
 
-for package in "${unwanted_packages[@]}"; do
-  # shellcheck disable=SC2310
-  if is_pkgx_package_installed "${package}"; then
-    log_task "Removing unwanted package '${package}' installed with pkgx"
-    {
-      grep --recursive --binary-files=without-match --files-with-matches \
-        --word-regexp "exec pkgx +${package}" "${HOME}/.local/bin" || true
-    } | xargs --no-run-if-empty rm -f
-  fi
-done
+# for package in "${unwanted_packages[@]}"; do
+#   # shellcheck disable=SC2310
+#   if is_pkgx_package_installed "${package}"; then
+#     log_task "Removing unwanted package '${package}' installed with pkgx"
+#     {
+#       grep --recursive --binary-files=without-match --files-with-matches \
+#         --word-regexp "exec pkgx +${package}" "${HOME}/.local/bin" || true
+#     } | xargs --no-run-if-empty rm -f
+#   fi
+# done
 
 readonly wanted_packages=(
   opendev.org/git-review

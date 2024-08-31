@@ -1,6 +1,7 @@
 [user]
 name = {{ .name }}
 email = {{ .email }}
+signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICvg34GA+eWxGIeHDH0zL51NNmhuvOWXaxbHl2atV4Ku
 
 [core]
 editor = {{ .editor }}
@@ -44,3 +45,13 @@ pfor = "!f() { set -ex; branch="${1:-"$(git current-branch)"}"; remote="$(git re
 psfor = "!f() { set -ex; git caane; git pfor "$@"; }; f"
 pdraft = "!f() { set -ex; branch="${1:-"$(git current-branch)"}"; remote="$(git remote-for-branch "${branch}")"; git push "${remote}" "HEAD:refs/drafts/${branch}"; }; f"
 psdraft = "!f() { set -ex; git caane; git pdraft "$@"; }; f"
+
+[gpg]
+       format = ssh
+
+{{- if .osid | eq "darwin"}}
+[gpg "ssh"]
+       program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+{{- end }}
+[commit]
+       gpgsign = true

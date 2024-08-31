@@ -1,11 +1,9 @@
 #!/bin/bash
 
 # {{ template "scripts-library" }}
-# {{ template "homebrew-library" }}
 
 # The following line is for ShellCheck to correctly identify the above include
 true || source ../../.chezmoitemplates/scripts-library
-true || source ../../.chezmoitemplates/homebrew-library
 
 ensure_path_entry "${HOME}/.local/bin"
 

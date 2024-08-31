@@ -59,11 +59,10 @@
   url: "https://github.com/junegunn/fzf/releases/download/v{{ $fzfVersion }}/fzf-{{ $fzfVersion }}-linux_{{ .chezmoi.arch }}.tar.gz"
   path: fzf
 
-{{ if not .is_devcontainer | or (.is_devcontainer | and (not (lookPath "pkgx")) | and (ne .chezmoi.osRelease.id "alpine")) -}}
+{{ if not .is_devcontainer -}}
 ".local/bin/pkgx":
   type: archive-file
-  {{ $pkgxVersion := includeTemplate "get-github-latest-version" (list "felipecrs/pkgx" $cache) }}
-  url: "https://github.com/felipecrs/pkgx/releases/download/v{{ $pkgxVersion }}/pkgx-{{ $pkgxVersion }}+linux+{{ .uname_arch | replace "_" "-" }}.tar.xz"
+  url: https://pkgx.sh/{{.uname}}/{{ .uname_arch}}.tgz
   path: pkgx
 {{- end }}
 
