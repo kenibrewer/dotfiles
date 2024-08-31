@@ -46,6 +46,10 @@ if [ -x "${HOME}/.local/bin/pkgx" ]; then
   eval "$("${HOME}/.local/bin/pkgx" --shellcode)"
 fi
 
+if [ -h "${HOME}/.1password/agent.sock" ]; then
+  export SSH_AUTH_SOCK="${HOME}/.1password/agent.sock"
+fi
+
 export VISUAL="# {{ .editor }}"
 export EDITOR="# {{ .editor }}"
 
